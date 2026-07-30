@@ -15,6 +15,11 @@ npm run dev                    # http://localhost:3000
 
 ## What's inside
 
+**A live setup checklist on the home screen.** It reads your env at request time, so it
+shows what's actually left to do rather than a generic list — step 1 checks itself off
+the moment a model credential is present. Lives in `app/_components/setup-checklist.tsx`;
+delete that file and the `setup` prop in `app/page.tsx` once you don't need it.
+
 A working research assistant with two real tools (no API keys needed for either):
 
 - **`get_weather`** — current conditions for any city, via [Open-Meteo](https://open-meteo.com).

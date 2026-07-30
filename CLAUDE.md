@@ -74,9 +74,16 @@ agent/
 └── channels/eve.ts     HTTP entrypoint + auth
 
 app/                    Next.js chat UI (page.tsx → <AgentChat />)
+├── _components/setup-checklist.tsx   Live onboarding checklist (server component)
 components/             shadcn/ui + AI Elements primitives
 next.config.ts          withEve() mounts the agent into the Next server
 ```
+
+**The setup checklist** on the empty state reads env at request time to show the user
+what's left to configure. It's scaffolding, not product — when the user has their own
+onboarding, or asks for a clean slate, delete `setup-checklist.tsx` and drop the `setup`
+prop from `app/page.tsx`. `page.tsx` is `force-dynamic` only so that checklist can read
+env; remove that too if the checklist goes.
 
 `npm run dev` runs the agent and the web UI together on one port.
 

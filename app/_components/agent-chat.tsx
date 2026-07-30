@@ -4,7 +4,7 @@ import type { UserContent } from "ai";
 import { Client, type MessageStreamEvent } from "eve/client";
 import { useEveAgent } from "eve/react";
 import { AlertCircleIcon } from "lucide-react";
-import { useCallback, useRef, useState } from "react";
+import { type ReactNode, useCallback, useRef, useState } from "react";
 import {
   Conversation,
   ConversationContent,
@@ -30,7 +30,7 @@ type Cancellation = {
   turnId?: string;
 };
 
-export function AgentChat() {
+export function AgentChat({ setup }: { readonly setup?: ReactNode }) {
   const [session] = useState(() =>
     new Client({ host: "", preserveCompletedSessions: true }).session(),
   );
@@ -195,6 +195,7 @@ export function AgentChat() {
           </div>
         ) : null}
         <div className="w-full">{composer}</div>
+        {isEmpty && setup ? <div className="w-full">{setup}</div> : null}
       </div>
     </main>
   );
