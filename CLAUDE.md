@@ -79,8 +79,10 @@ components/             shadcn/ui + AI Elements primitives
 next.config.ts          withEve() mounts the agent into the Next server
 ```
 
-**The setup checklist** on the empty state reads env at request time to show the user
-what's left to configure. It's scaffolding, not product — when the user has their own
+**The setup checklist** on the empty state reads env and `agent/channels/` at request
+time to show the user what's left to configure. Its step 1 copy describes Ship Studio's
+own ⌘K → Environment Variables flow — **don't rewrite it as a terminal `cp` command**,
+since these users aren't in a shell. It's scaffolding, not product — when the user has their own
 onboarding, or asks for a clean slate, delete `setup-checklist.tsx` and drop the `setup`
 prop from `app/page.tsx`. `page.tsx` is `force-dynamic` only so that checklist can read
 env; remove that too if the checklist goes.
